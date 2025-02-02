@@ -1,7 +1,26 @@
 import React from "react";
+import { useUserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  return <div>Home</div>;
+  const { setUser } = useUserContext();
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    setUser({
+      name: "Polo",
+      email: "polo@test.com",
+    });
+    navigate("/dashboard");
+  };
+
+  return (
+    <>
+      <h1>Home</h1>
+      <button onClick={handleLogin}>Login</button>
+    </>
+  );
 };
 
 export default Home;
